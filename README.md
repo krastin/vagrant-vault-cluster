@@ -13,6 +13,13 @@ a local vault cluster for testing
     
 ## Delete VMs
     vagrant destroy
+
+## Info
+Log files are in /home/vagrant/vault*.log
+
+- vault.log - standard output of vault
+- vault-audit.log - audit log of vault
+- vault-audit-raw.log - raw audit log of vault
     
 # To Do
 - [ ] Tests for proper systemd configuration
