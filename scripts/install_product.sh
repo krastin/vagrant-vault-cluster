@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-sudo apt-get update
-sudo apt-get install -y curl jq vim unzip tmux
+# TODO: my own box will have these utilities and vault
 
+# install utilities we need
+which curl jq vim unzip tmux || {
+  apt-get update
+  apt-get install -y curl jq vim unzip tmux
+}
 
 # exit if product is not set
 if [ ! "$PRODUCT" ] ; then
