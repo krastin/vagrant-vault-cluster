@@ -2,17 +2,25 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-
-    # TODO: use my own box, vault version
-    config.vm.box = "ubuntu/xenial64"
   
     (1..3).each do |i|
-      config.vm.define "vault0#{i}" do |vault|
-        vault.vm.hostname = "vault0#{i}"
-        vault.vm.network "private_network", ip: "10.10.10.#{10+i}"
-        vault.vm.provision "shell", path: "scripts/install_product.sh",
-          env: {"PRODUCT" => "vault"}
-      end
+        config.vm.define "vault0#{i}" do |vault|
+            vault.vm.box = "krastin/xenial-vault"
+            vault.vm.box_version = "1.4.0"
+            vault.vm.hostname = "vault0#{i}"
+            vault.vm.network "private_network", ip: "10.10.10.#{10+i}"
+            vault.vm.provision "shell", path: "scripts/install_product.sh",
+                env: {"PRODUCT" => "vault"}
+        end
+    end
+
+    config.vm.define :consul do |consul|
+        consul.vm.box = "krastin/xenial-consul"
+        consul.vm.box_version = "1.8.0"
+        consul.vm.hostname = "consul" 
+        consul.vm.network "private_network", ip: "10.10.10.10"
+        consul.vm.provision "shell", path: "scripts/install_product.sh",
+            env: {"PRODUCT" => "consul"}
     end
   end
   

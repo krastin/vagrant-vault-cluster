@@ -2,5 +2,5 @@
 
 vault secrets enable transit
 vault write -f transit/keys/autounseal
-vault policy write autounseal /vagrant/config/autounseal.policy
+vault policy write autounseal /vagrant/config/autounseal/autounseal.policy
 
