@@ -35,6 +35,7 @@ Log files are in /opt/vault/vault*.log
 - [ ] Tests for proper systemd configuration
 - [ ] Makefile to up or down machines fast
 - [ ] Preconfigure Vault being ready to run
+- [ ] Import Vault systemd ready config from github repo packer-ec2-vault
 
 # Done
 - [x] Single Vagrantfile for all VMs
